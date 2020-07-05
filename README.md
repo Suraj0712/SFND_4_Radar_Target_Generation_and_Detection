@@ -109,6 +109,7 @@ Implement the 2D CFAR process on the output of 2D FFT operation, i.e the Range D
    > To supress the Noise and to avoid the false positives we implemented the ```cell averaging constant false alarm rate``` technnic. In this technic we have a 2d mask which contains the guard cell(which avoids the signal supression) and training cells. we slide this mask over entire image and replace the value at a particular cell by avarage of training cells. this technics works cause we assume noise is spatially and temporally same. the offset is very important parameters to avois the false positives, HOwever large offset factor might lead to supression of valid signal. 
 
 <img src="./docs/cfar.png" width="779" height="414" />
+
 ### References
 
 [FMCW leature series](https://www.youtube.com/playlist?list=PLJAlx-5DOdeMNjpg4sRO6cty3gL_PZeCE)
