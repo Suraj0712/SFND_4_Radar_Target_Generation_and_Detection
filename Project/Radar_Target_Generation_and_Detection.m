@@ -39,7 +39,7 @@ Range_Resolution    = 1;
 B_sweep  = speed_of_light / (2 * Range_Resolution);                       % Bandwidth of the FMCW, Bsweep 
 T_s      = (sweep_time_factor * 2 * Max_Range_of_Radar) / speed_of_light; % Chirp Time of the FMCW
 slope    = B_sweep / T_s;                                                 % Slope of the FMCW
-ga                                                  
+                                                  
 %The number of chirps in one sequence. Its ideal to have 2^ value for the ease of running the FFT
 %for Doppler Estimation. 
 Nd = 128;                                       % #of doppler cells OR #of sent periods % number of chirps
