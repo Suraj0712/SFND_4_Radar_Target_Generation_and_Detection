@@ -57,9 +57,6 @@ $ matlab Radar_Target_Generation_and_Detection.m
 $ click on <Run>
 ```
 
-
-
-
 ### Project Rubric
 
 #### Task.1 FMCW Waveform Design
@@ -80,9 +77,9 @@ Sweep time factor      = 5.5;
 ```
    > We know that the Bandwidth of the chirp is only depends on the Range resolution. And its mainly because the signal in frqeuancy domain can only de distictly identified if we have enough frqeuancy difference and time of observation. simillarly the chirp time is only dependent on the Sweep time factor. we need to have sweep time factor more than two inorder to avoid the interference of signals. to get the slope of chirp we just need to get the ration of prior quantities.
 
-Bandwidth   = speed of light / (2 * Range Resolution)        = 150 *10^6 Hz
-chirp time  = (sweep time factor*2*Max Range)/speed of light = 7.33 *10^-6 sec
-slope       = Bandwidth / chirp time                         = 2.0455 * 10^13
+* Bandwidth   = speed of light / (2 * Range Resolution)        = 150 *10^6 Hz
+* chirp time  = (sweep time factor*2*Max Range)/speed of light = 7.33 *10^-6 sec
+* slope       = Bandwidth / chirp time                         = 2.0455 * 10^13
 
 #### Task.2 Simulation Loop
 Simulate Target movement and calculate the beat or mixed signal for every timestamp.
@@ -96,23 +93,24 @@ Implement the Range FFT on the Beat or Mixed Signal and plot the result.
 
    > The FMCW radar uses the linear increase in frequency to detect the distance. To make it bit more simple we know that the received signal is nothing but replica of transmitted signal with some delay. As you can see the following block diagram the mixer have access to both transmitted and received signal and to get the beat frequency it substract the received signal. Every object will have its corresponding bit frquency based on its range. to get the beat frequency associated with the signal we need to convert the signal from time domain to frequancy domain and in frequency domain every peak will corrsponds to object.
 
-<img src="./docs/FMCW_diagram.png" width="779" height="414" />
+<img src="./docs/fmcw_diagram.png" width="779" height="414" />
 
 
 #### Task.4 Doppler FFT (2nd FFT)
 Implement the Doppler FFT based on the Range FFT readings.
-   > We know that if the source and the observer have the relative velocity the frequncy observed will have some shift and generally it is used for determining the velocity. HOwever in case of the FMCW Radar the we care about beat frequancy and which is predominatly dominated by the range of object. To get he velocity estimation from the FMCW radar we focus on the phase of the received signal. we know that in FMCW we send multiple chirps in one sweep. for every chirp the range fft will look identical and if we calculate the change of phase difference over each chirp we can get the velocity. You can follow the following image for more details.
-
 <img src="./docs/doppler_fft.png" width="779" height="414" />
+   > We know that if the source and the observer have the relative velocity the frequncy observed will have some shift and generally it is used for determining the velocity. However in case of the FMCW Radar the we care about beat frequancy and which is predominatly dominated by the range of object. To get he velocity estimation from the FMCW radar we focus on the phase of the received signal. we know that in FMCW we send multiple chirps in one sweep. for every chirp the range fft will look identical and if we calculate the change of phase difference over each chirp we can get the velocity. You can follow the following image for more details.
+
 <img src="./docs/doppler_fft_res.png" width="779" height="414" />
 
 #### Task.5 2D CFAR
-Find examples where the TTC estimate of the Lidar sensor does not seem plausible. Describe your observations and provide a sound argumentation of why you think this happened.
+Implement the 2D CFAR process on the output of 2D FFT operation, i.e the Range Doppler Map.
 
-   > Following are the results I got with the ```FAST + BRIEF``` detector descriptors. Most of the time camera gave the higher readings than the Lidar however this I think its because the way i am handling the outliers. 
+   > To supress the Noise and to avoid the false positives we implemented the ```cell averaging constant false alarm rate``` technnic. In this technic we have a 2d mask which contains the guard cell(which avoids the signal supression) and training cells. we slide this mask over entire image and replace the value at a particular cell by avarage of training cells. this technics works cause we assume noise is spatially and temporally same. the offset is very important parameters to avois the false positives, HOwever large offset factor might lead to supression of valid signal. 
 
 <img src="./docs/cfar.png" width="779" height="414" />
 ### References
+
 [FMCW leature series](https://www.youtube.com/playlist?list=PLJAlx-5DOdeMNjpg4sRO6cty3gL_PZeCE)
 
 ## Thank you
