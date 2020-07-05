@@ -3,14 +3,9 @@
 # Udacity Nanodegree: Sensor Fusion
 
 ## Project 04: Radar target generation and detection
-[![Udacity - Robotics NanoDegree Program](https://s3-us-west-1.amazonaws.com/udacity-robotics/Extra+Images/RoboND_flag.png)](https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313)
-
-# Udacity Nanodegree: Sensor Fusion
-
-## Project 04: Radar target generation and detection
 
 <p align="center">
-    <img src="./Project/docs/Radar_detection_and_clustering.gif" width="700" height="400" title="Radar detection and clustering" >
+    <img src="./docs/Radar_detection_and_clustering.gif" width="700" height="400" title="Radar detection and clustering" >
 </p>
 
 This project aims to develop a software stack that will enable us to achieve the following objectives.
@@ -25,7 +20,7 @@ This project aims to develop a software stack that will enable us to achieve the
 ```
 The complete Project pipeline is as follows. 
 
-<img src="./Project/docs/Project_layout.png" width="779" height="414" />
+<img src="./docs/Project_layout.png" width="779" height="414" />
 
 To achieve our goal we need to complete the following six major tasks: 
 
